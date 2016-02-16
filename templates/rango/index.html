@@ -15,6 +15,7 @@
                     <li><a href="{% url 'category' category.slug %}">{{ category.name }}</a> </li>
 
                     {% endfor %}
+                    <a href="{% url 'add_category' %}">Add a New Category</a><br />
                     {% for page in pages %}
                     <li>{{ page.title }} </li>
                     {% endfor %}
