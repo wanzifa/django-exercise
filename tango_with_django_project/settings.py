@@ -122,3 +122,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
         STATIC_PATH,
 )
+
+
+PASSWORD_HASHERS = (
+'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')

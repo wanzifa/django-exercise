@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rango</title>>
+    </head>>
+
+    <body>
+            {% if page %}
+                <a href="{{ page.url }}">{{ page.title }}</a>
+            {% else %}
+            The specified  page {{ page.title }} does not exist!
+        {% endif %}
+    </body>
+</html>

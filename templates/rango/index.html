@@ -7,17 +7,26 @@
     </head>
 
     <body>
-        <h1>Rango says...hello world!<h1>
+        {% if user.is_authenticated %}
+        <a href="{% url 'restricted' %}">Restricted Page</a></body><br />
+        <a href="{% url 'logout' %}">Logout</a><br />
+        <h1>Rango says...hello  {{ user.username }}!</h1>
+
+        {% else %}
+        <h1>Rango says...hello world!</h1>
+        <a href="{% url 'register' %}">Register Here</a>
+        <a href="{% url 'login' %}">Login</a>
+        {% endif %}
 
             {% if categories %}
                 <ul>
                     {% for category in categories %}
                     <li><a href="{% url 'category' category.slug %}">{{ category.name }}</a> </li>
-
+                    <a href="{% url 'add_page' category.slug %}">Add a Page</a>
                     {% endfor %}
                     <a href="{% url 'add_category' %}">Add a New Category</a><br />
                     {% for page in pages %}
-                    <li>{{ page.title }} </li>
+                    <li><a href="{% url 'page' page.slug %}">{{ page.title }}</a></li>
                     {% endfor %}
                 </ul>
             {% else %}
