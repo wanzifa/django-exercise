@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Rango</title>
-    </head>
-
+{% extends 'rango/base2.html' %}
+{% block title %}Register with Rango{% endblock %}
+{% block body_block %}
     <body>
         <h1>Register with Rango</h1>
         {% if registered %}
@@ -20,4 +17,5 @@
         </form>
         {% endif %}
     </body>
+{% endblock %}
 </html>

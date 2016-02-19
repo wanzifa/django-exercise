@@ -1,23 +1,8 @@
-<!DOCTYPE html>
+{% extends 'rango/base.html' %}
 {% load staticfiles %}
-<html>
 
-    <head>
-        <title>Rango</title>
-    </head>
-
-    <body>
-        {% if user.is_authenticated %}
-        <a href="{% url 'restricted' %}">Restricted Page</a></body><br />
-        <a href="{% url 'logout' %}">Logout</a><br />
-        <h1>Rango says...hello  {{ user.username }}!</h1>
-
-        {% else %}
-        <h1>Rango says...hello world!</h1>
-        <a href="{% url 'register' %}">Register Here</a>
-        <a href="{% url 'login' %}">Login</a>
-        {% endif %}
-
+{% block title %}Index{% endblock %}
+{% block body_block %}
             {% if categories %}
                 <ul>
                     {% for category in categories %}
@@ -32,8 +17,5 @@
             {% else %}
                 <strong>There are no categories present</strong>
             {% endif %}
-            <a href="/rango/about/">About</a><br />
                 <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
-    </body>
-
-</html>
+{% endblock %}

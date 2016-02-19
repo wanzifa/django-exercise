@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Rango</title>>
-    </head>>
-
-    <body>
+{% extends 'rango/base2.html' %}
+{% block title %}{{ page.title }}{% endblock %}
+{% block body_block %}
             {% if page %}
                 <a href="{{ page.url }}">{{ page.title }}</a>
             {% else %}
             The specified  page {{ page.title }} does not exist!
         {% endif %}
-    </body>
-</html>
+{% endblock %}
