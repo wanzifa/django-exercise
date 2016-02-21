@@ -1,21 +1,58 @@
 {% extends 'rango/base.html' %}
+
 {% load staticfiles %}
 
 {% block title %}Index{% endblock %}
-{% block body_block %}
-            {% if categories %}
-                <ul>
-                    {% for category in categories %}
-                    <li><a href="{% url 'category' category.slug %}">{{ category.name }}</a> </li>
-                    <a href="{% url 'add_page' category.slug %}">Add a Page</a>
-                    {% endfor %}
-                    <a href="{% url 'add_category' %}">Add a New Category</a><br />
-                    {% for page in pages %}
-                    <li><a href="{% url 'page' page.slug %}">{{ page.title }}</a></li>
-                    {% endfor %}
-                </ul>
+
+        {% block body_block %}
+{% if user.is_authenticated %}
+    <div class="page-header">
+
+                <h1>Rango says... hello {{ user.username }}!</h1>
             {% else %}
-                <strong>There are no categories present</strong>
+                <h1>Rango says... hello world!</h1>
             {% endif %}
-                <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />
-{% endblock %}
+</div>
+
+         <div class="row placeholders">
+            <div class="col-xs-12 col-sm-6 placeholder">
+               <div class="panel panel-primary">
+    <div class="panel-heading">
+            <h3 class="panel-title">Categories</h3>
+    </div>
+</div>
+
+              {% if categories %}
+                    <ul>
+                        {% for category in categories %}
+                         <li><a href="{% url 'category'  category.slug %}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <strong>There are no categories present.</strong>
+                {% endif %}
+
+            </div>
+            <div class="col-xs-12 col-sm-6 placeholder">
+              <div class="panel panel-primary">
+            <div class="panel-heading">
+                    <h3 class="panel-title">Pages</h3>
+            </div>
+    </div>
+
+                {% if pages %}
+                    <ul>
+                        {% for page in pages %}
+                         <li><a href="{{page.url}}">{{ page.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <strong>There are no categories present.</strong>
+                {% endif %}
+            </div>
+
+          </div>
+
+
+       <p> visits: {{ visits }}</p>
+        {% endblock %}
