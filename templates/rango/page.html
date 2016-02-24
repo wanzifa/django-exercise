@@ -3,6 +3,8 @@
 {% block body_block %}
             {% if page %}
                 <a href="{{ page.url }}">{{ page.title }}</a>
+                <li>{{ page.first_visit }}</li>
+                <li>{{ page.last_visit }}</li>
             {% else %}
             The specified  page {{ page.title }} does not exist!
         {% endif %}

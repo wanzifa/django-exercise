@@ -1,4 +1,11 @@
-{% for c in cats %}
-    {% if c == act_cat %} <li  class="nav nav-pills nav-stacked";s> {% else  %} <li>{% endif %}
-            <a href="{% url 'category'  c.slug %}">{{ c.name }}</a></li>
-{% endfor %}
+
+	<ul class="nav nav-list">
+	   {% if cat_list %}
+		{% for cat in cat_list %}
+		  <li><a href="{% url 'category' cat.slug %}">{{ cat.name }}</a></li>
+
+		{% endfor %}
+	   {% else %}
+		<li>No categories at present.</li>
+	   {% endif %}
+	</ul>
